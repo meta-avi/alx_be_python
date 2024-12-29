@@ -1,27 +1,32 @@
-# Prompt the user for their task
-task = input("Enter your task: ")
+def main():
+    # Prompt user for task details
+    task = input("Enter your task: ")
+    priority = input("Priority (high/medium/low): ").lower()
+    time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Prompt for the task's priority
-priority = input("Priority (high/medium/low): ")
+    # Customized reminder based on priority and time sensitivity
+    match priority:
+        case "high":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+            else:
+                print(f"Reminder: '{task}' is a high priority task. Try to complete it soon!")
 
-# Prompt if the task is time-bound
-time_bound = input("Is it time-bound? (yes/no): ")
+        case "medium":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a medium priority task that should be addressed today.")
+            else:
+                print(f"Reminder: '{task}' is a medium priority task. Plan to complete it when possible.")
 
-# Process the task based on priority and time sensitivity
-match priority:
-    case "high":
-        reminder = f"'{task}' is a high priority task"
-    case "medium":
-        reminder = f"'{task}' is a medium priority task"
-    case "low":
-        reminder = f"'{task}' is a low priority task"
-    case _:
-        reminder = "Invalid priority level entered."
+        case "low":
+            if time_bound == "yes":
+                print(f"Reminder: '{task}' is a low priority task but requires attention today.")
+            else:
+                print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time.")
 
-if time_bound.lower() == "yes":
-    reminder += " that requires immediate attention today!"
-elif priority.lower() == "low":
-    reminder += ". Consider completing it when you have free time."
+        case _:
+            print("Invalid priority entered. Please specify high, medium, or low.")
 
-# Print the reminder
-print(reminder)
+# Run the program
+if __name__ == "__main__":
+    main()
