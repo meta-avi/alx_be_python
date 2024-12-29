@@ -1,7 +1,7 @@
 # Ask the user for the weather condition
 weather = input("What's the weather like today? (sunny/rainy/cold): ").lower()
 
-# Conditional statements to give recommendations based on weather
+# Conditional statements to give recommendations based on
 if weather == "sunny":
     print("Wear a t-shirt and sunglasses.")
 elif weather == "rainy":
